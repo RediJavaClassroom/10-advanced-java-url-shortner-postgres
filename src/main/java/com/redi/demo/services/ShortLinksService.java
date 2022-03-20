@@ -14,7 +14,7 @@ public class ShortLinksService {
   final private KeyGenerationService keyGenerationService;
 
   private final String BASE_URL = "http://localhost:8080";
-  private Map<String, URI> shortLinks = new ConcurrentHashMap<>();
+  private final Map<String, URI> shortLinks = new ConcurrentHashMap<>();
 
   @Autowired
   public ShortLinksService(final KeyGenerationService keyGenerationService) {
