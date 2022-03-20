@@ -4,6 +4,7 @@ import com.redi.demo.model.CreateShortLinkRequest;
 import com.redi.demo.model.ShortLink;
 import com.redi.demo.services.ShortLinksService;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ShortLinksController {
-  private ShortLinksService shortLinksService = new ShortLinksService();
+
+  private final ShortLinksService shortLinksService;
+
+  @Autowired
+  public ShortLinksController(final ShortLinksService shortLinksService) {
+    this.shortLinksService = shortLinksService;
+  }
 
   @PostMapping("links")
   public ShortLink createLink(final @RequestBody CreateShortLinkRequest request) {

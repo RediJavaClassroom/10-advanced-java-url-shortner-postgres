@@ -5,13 +5,21 @@ import com.redi.demo.model.ShortLink;
 import java.net.URI;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ShortLinksService {
 
-  private KeyGenerationService keyGenerationService = new KeyGenerationService();
+  final private KeyGenerationService keyGenerationService;
 
   private final String BASE_URL = "http://localhost:8080";
   private Map<String, URI> shortLinks = new ConcurrentHashMap<>();
+
+  @Autowired
+  public ShortLinksService(final KeyGenerationService keyGenerationService) {
+    this.keyGenerationService = keyGenerationService;
+  }
 
   public ShortLink createShortLink(final CreateShortLinkRequest request) {
     final var key = keyGenerationService.generateKey();
