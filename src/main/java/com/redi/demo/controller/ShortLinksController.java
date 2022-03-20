@@ -2,9 +2,7 @@ package com.redi.demo.controller;
 
 import com.redi.demo.model.CreateShortLinkRequest;
 import com.redi.demo.model.ShortLink;
-import java.net.URI;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.redi.demo.services.ShortLinksService;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,15 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ShortLinksController {
-  private final String BASE_URL = "http://localhost:8080";
-  private Map<String, URI> shortLinks = new ConcurrentHashMap<>();
+  private ShortLinksService shortLinksService = new ShortLinksService();
 
   @PostMapping("links")
   public ShortLink createLink(final @RequestBody CreateShortLinkRequest request) {
-    final var key = generateKey();
-    shortLinks.put(key, request.originalURL);
-    final var uri = URI.create(String.format("%s/%s", BASE_URL, key));
-    return new ShortLink(uri);
+    return shortLinksService.createShortLink(request);
   }
 
   @GetMapping("/{key}")
@@ -32,10 +26,7 @@ public class ShortLinksController {
       final @PathVariable(value = "key") String key,
       final HttpServletResponse httpServletResponse) {
     httpServletResponse.setStatus(HttpStatus.MOVED_PERMANENTLY.value());
-    httpServletResponse.setHeader(HttpHeaders.LOCATION, shortLinks.get(key).toString());
-  }
-
-  private String generateKey() {
-    return "TODO";
+    httpServletResponse.setHeader(
+        HttpHeaders.LOCATION, shortLinksService.expandShortLink(key).toString());
   }
 }

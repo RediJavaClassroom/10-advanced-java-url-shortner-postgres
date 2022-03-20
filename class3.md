@@ -172,3 +172,22 @@ public class ShortLink {
 ```
 
 ---
+
+## Recap: our code structure
+
+* Model, domain classes – model our application data
+* Controllers – handle incoming HTTP requests, perform business logic
+
+## Service layer
+
+Let's separate business logic into its own *service layer*.
+
+![](img/class3-service-layer.gif)
+
+*from Martin Fowler [post](https://martinfowler.com/eaaCatalog/serviceLayer.html).
+
+---
+
+
+
+
