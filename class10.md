@@ -46,4 +46,4 @@ curl http://localhost:8080/??? -v
 ```
 
 ## Home assignment
-* Add `created_at` field to `short_links` table and `ShortLink` object
+* Add `expired_at` field to `short_links` table and `ShortLink` object and skip links that older than 1 month in `expandShortLink`
