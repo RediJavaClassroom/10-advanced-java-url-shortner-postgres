@@ -1,29 +1,55 @@
 package com.redi.demo.repository.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "short_links")
-public class ShortLink {
+@Table(name = "users")
+public class User {
 
   @Id
-  private String key;
-  private String originalUrl;
+  private String id;
+  private String email;
+  private String name;
+  private String password;
 
-  protected ShortLink() {}
-
-  public ShortLink(final String key, final String originalUrl) {
-    this.key = key;
-    this.originalUrl = originalUrl;
+  public String getId() {
+    return id;
   }
 
-  public String getKey() {
-    return key;
+  public void setId(final String id) {
+    this.id = id;
   }
 
-  public String getOriginalUrl() {
-    return originalUrl;
+  public String getEmail() {
+    return email;
   }
+
+  public void setEmail(final String email) {
+    this.email = email;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(final String name) {
+    this.name = name;
+  }
+
+  @JsonIgnore
+  public String getPassword() {us
+          
+    return password;
+  }
+
+  public void setPassword(final String password) {
+    this.password = password;
+  }
+
+  protected User() {}
+
 }
