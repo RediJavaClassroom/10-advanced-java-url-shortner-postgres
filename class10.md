@@ -25,13 +25,15 @@ docker exec -it shortlinks-db psql --host=localhost --username=postgres --file /
 
 ### Add JPA repo
 
-
+TODO add branch name
 ---
 
 ### Let's test it
 
 ```
 curl -X POST http://localhost:8080/links --data '{"url": "http://example.org"}' -H "Content-Type: application/json"
+curl http://localhost:8080/xxx -v
+
 ```
 
 ## Home assignment
