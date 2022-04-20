@@ -17,42 +17,21 @@
 
 ## Spin up database
 ```
-docker run --name shortlinks-db --publish 5432:5432 --env POSTGRES_PASSWORD=mysecretpassword --detach postgres
+docker run --name shortlinks-db --publish 5432:5432 --env POSTGRES_PASSWORD=mysecretpassword --detach --volume /Users/kimk/repos/redi/10-advanced-java-url-shortner-postgres:/opt/shortlinks-db postgres
+docker exec -it shortlinks-db psql --host=localhost --username=postgres --file /opt/shortlinks-db/src/main/resources/init-db.sql
 ```
 
 ----
 
-### Add Maven dependencies
+### Add JPA repo
 
-Add in `pom.xml`
 
-```xml
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-		</dependency>
+---
+
+### Let's test it
+
 ```
-
------
-
-### Add configuration
-
-To `application.properties`
+curl -X POST http://localhost:8080/links --data '{"url": "http://example.org"}' -H "Content-Type: application/json"
 ```
-spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
-spring.datasource.username=postgres
-spring.datasource.password=mysecretpassword
-spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
-spring.jpa.show-sql=true
-spring.jpa.hibernate.ddl-auto=create
-``` 
-
-----
-
-----
 
 ## Home assignment
