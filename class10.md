@@ -31,7 +31,12 @@ docker exec -it shortlinks-db psql --host=localhost --username=postgres --file /
 * Add repositories
 
 ----
-
+#### Cascade Types
+**PERSIST** create together  
+**MERGE** update existing
+**REFRESH** refresh together  
+**REMOVE** delete together  
+**ALL** all of the above
 ### Let's test it
 
 ```

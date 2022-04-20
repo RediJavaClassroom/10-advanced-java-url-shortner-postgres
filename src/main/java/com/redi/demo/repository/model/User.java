@@ -11,20 +11,11 @@ import javax.persistence.Table;
 public class User {
 
   @Id
-  private String id;
   private String email;
   private String name;
   private String password;
 
   protected User() {}
-
-  public String getId() {
-    return id;
-  }
-
-  public void setId(final String id) {
-    this.id = id;
-  }
 
   public String getEmail() {
     return email;
