@@ -25,14 +25,18 @@ docker exec -it shortlinks-db psql --host=localhost --username=postgres --file /
 
 ### Add JPA repo
 
-TODO add branch name
----
+* Add `spring-boot-starter-data-jpa` and `postgresql` dependencies to `pom.xml`
+* Add configuration to `application.properties`
+* Add entity classes
+* Add repositories
+
+----
 
 ### Let's test it
 
 ```
 curl -X POST http://localhost:8080/links --data '{"url": "http://example.org"}' -H "Content-Type: application/json"
-curl http://localhost:8080/xxx -v
+curl http://localhost:8080/??? -v
 
 ```
 

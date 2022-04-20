@@ -6,15 +6,15 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "short_links")
-public class ShortLink {
+public class ShortLinkEntiry {
 
   @Id
   private String key;
   private String originalUrl;
 
-  protected ShortLink() {}
+  protected ShortLinkEntiry() {}
 
-  public ShortLink(final String key, final String originalUrl) {
+  public ShortLinkEntiry(final String key, final String originalUrl) {
     this.key = key;
     this.originalUrl = originalUrl;
   }
