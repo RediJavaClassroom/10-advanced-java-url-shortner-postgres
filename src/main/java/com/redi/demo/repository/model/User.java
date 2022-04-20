@@ -16,6 +16,8 @@ public class User {
   private String name;
   private String password;
 
+  protected User() {}
+
   public String getId() {
     return id;
   }
@@ -41,15 +43,12 @@ public class User {
   }
 
   @JsonIgnore
-  public String getPassword() {us
-          
+  public String getPassword() {
     return password;
   }
 
   public void setPassword(final String password) {
     this.password = password;
   }
-
-  protected User() {}
 
 }
