@@ -41,3 +41,4 @@ curl http://localhost:8080/??? -v
 ```
 
 ## Home assignment
+* Add `created_at` field to `short_links` table and `ShortLink` object
