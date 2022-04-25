@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "short_links")
-public class ShortLinkEntiry {
+public class ShortLinkEntity {
 
   @Id
   private String key;
@@ -17,9 +17,9 @@ public class ShortLinkEntiry {
   @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
   private User user;
 
-  protected ShortLinkEntiry() {}
+  protected ShortLinkEntity() {}
 
-  public ShortLinkEntiry(final String key, final String originalUrl) {
+  public ShortLinkEntity(final String key, final String originalUrl) {
     this.key = key;
     this.originalUrl = originalUrl;
   }
